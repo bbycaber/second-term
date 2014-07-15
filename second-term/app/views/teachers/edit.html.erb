@@ -1,0 +1,43 @@
+<h1>Editing teacher</h1>
+
+<%= form_for(@teacher) do |f| %>
+  <% if @teacher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+      <ul>
+      <% @teacher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name,  {:disabled => 'true'} %>
+  </div>
+  <div class="field">
+    <%= f.label :teacher_id %><br>
+    <%= f.number_field :teacher_id,  {:disabled => 'true'} %>
+  </div>
+
+    <%= f.fields_for :subjects do |ff| %>
+        <%= ff.label :subject_id, "Code Subject" %>
+        <%= ff.text_field :subject_id %> 
+        <%= ff.label :name, "Subject Name"%>
+        <%= ff.text_field :name%> 
+
+        <%= ff.label :active %>
+    	<%= ff.check_box :active %><br>
+    <% end %> 
+
+   
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @teacher %> |
+<%= link_to 'Back', teachers_path %>
