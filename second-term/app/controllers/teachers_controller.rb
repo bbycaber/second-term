@@ -40,7 +40,7 @@ class TeachersController < ApplicationController
 
     respond_to do |format|
       if @teacher.save
-         @teacher.actives_subjects = @teacher.active_subjects
+         # @teacher.actives_subjects = @teacher.active_subjects
         format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
         format.json { render :show, status: :created, location: @teacher }
       else
