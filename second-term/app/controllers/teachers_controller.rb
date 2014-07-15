@@ -8,6 +8,10 @@ class TeachersController < ApplicationController
 
     if params[:sort] == "Name"
       @teachers = Teacher.order(:name)
+    elsif params[:sort] == "Amount"
+        @teachers = Teacher.all.sort_by{|teacher| teacher.active_subjects}.reverse
+    else
+        @teachers = Teacher.all
     end
 
     # if params[:sort] == "Amount"
